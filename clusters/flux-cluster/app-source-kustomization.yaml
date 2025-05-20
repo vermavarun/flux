@@ -12,6 +12,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: app-source
-  targetNamespace: default
+  targetNamespace: from-flux-ns
   timeout: 3m0s
   wait: true

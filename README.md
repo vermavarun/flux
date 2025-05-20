@@ -2,6 +2,7 @@
 All operations for flux with Kubernetes
 
 - cluster-name: flux-cluster
+- namespace-on-host: from-flux-ns
 
 <hr/>
 
@@ -26,6 +27,7 @@ All operations for flux with Kubernetes
 - flux reconcile kustomization app-source --with-source
 - flux -n flux-system create secret git git-access-auth --url=https://github.com/vermavarun/flux-source --username=vermavarun --password={PAT}
 
+
 ## set up local repo for flux tool
 
 export GITHUB_USER=vermavarun
@@ -49,12 +51,12 @@ flux create kustomization app-source --target-namespace=default --source=app-sou
 
 
 
-## deploy flux source of truth repo and sync
+## validate
+- kubectl get deploy -n from-flux-ns
 
-`
-
-`
-
-# Appendix
+# Appendix:
 
 - [flux docs](https://fluxcd.io/flux/get-started/)
+
+# Questions:
+- What if source repo is private?
