@@ -37,7 +37,7 @@ export GITHUB_TOKEN=''
 ## set up source of truth repo folder
 
 `
-flux create source git app-source --url=https://github.com/vermavarun/flux-source.git --branch=main --interval=30s --export > ./app-source/flux_source.yaml
+flux create source git app-source --url=https://github.com/vermavarun/flux-source.git --branch=main --interval=30s --export > ./clusters/flux-cluster/app-source_source.yaml
 `
 
 ## set up sync of truth repo
@@ -46,11 +46,7 @@ flux create source git app-source --url=https://github.com/vermavarun/flux-sourc
 flux create kustomization app-source --target-namespace=default --source=app-source --path="./app" --prune=true --wait=true --interval=30m --retry-interval=2m --health-check-timeout=3m --export > ./clusters/flux-cluster/app-source-kustomization.yaml
 `
 
-run
-`
-kubectl apply -f deploy-app/flux_source.yaml
-kubectl apply -f deploy-app/flux_sync.yaml
-`
+
 
 
 ## deploy flux source of truth repo and sync
