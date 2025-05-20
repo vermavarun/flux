@@ -1,6 +1,10 @@
 # flux
 All operations for flux with Kubernetes
 
+- cluster-name: flux-cluster
+
+<hr/>
+
 - Create cluster
   - kind create cluster --name flux-cluster
 - show all clusters
@@ -18,18 +22,20 @@ All operations for flux with Kubernetes
 
 # Flux
 
+
+
 ## set up local repo for flux tool
 
 export GITHUB_USER=vermavarun
 export GITHUB_TOKEN=''
 
-`flux bootstrap github --owner=$GITHUB_USER --repository=flux --branch=main --path=deployinfra --personal`
+`flux bootstrap github --owner=$GITHUB_USER --repository=flux --branch=main --path=./clusters/flux-cluster --personal`
 
 
 ## set up source of truth repo folder
 
 `
-flux create source git flux-repo-obj --url=https://github.com/vermavarun/flux.git --branch=main --interval=30s --export > ./deploy-app/flux_source.yaml
+flux create source git app-source --url=https://github.com/vermavarun/flux-source.git --branch=main --interval=30s --export > ./app-source/flux_source.yaml
 `
 
 ## set up sync of truth repo
