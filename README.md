@@ -27,6 +27,7 @@ All operations for flux with Kubernetes
 - flux get kustomizations --watch
 - flux reconcile kustomization app-source --with-source
 - flux -n flux-system create secret git git-access-auth --url=https://github.com/vermavarun/flux-source --username=vermavarun --password={PAT}
+- flux tree kustomization app-source
 
 
 ## set up local repo for flux tool
