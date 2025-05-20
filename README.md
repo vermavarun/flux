@@ -3,6 +3,7 @@ All operations for flux with Kubernetes
 
 - cluster-name: flux-cluster
 - namespace-on-host: from-flux-ns
+- source repo: https://github.com/vermavarun/flux-source/
 
 <hr/>
 
