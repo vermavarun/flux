@@ -12,4 +12,15 @@ All operations for flux with Kubernetes
 
 
 # Cluster
-kubectl cluster-info --context kind-flux-cluster
+- kubectl cluster-info --context kind-flux-cluster
+- kubectl config use-context {context-name} # to change context
+
+
+# Flux
+
+## set up local repo
+
+export GITHUB_USER=vermavarun
+export GITHUB_TOKEN=''
+
+`flux bootstrap github --owner=$GITHUB_USER --repository=flux --branch=main --path=deployinfra --personal`
