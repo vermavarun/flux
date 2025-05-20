@@ -22,7 +22,8 @@ All operations for flux with Kubernetes
 
 # Flux
 
-
+- flux get kustomizations --watch
+- 
 
 ## set up local repo for flux tool
 
@@ -48,6 +49,13 @@ run
 `
 kubectl apply -f deploy-app/flux_source.yaml
 kubectl apply -f deploy-app/flux_sync.yaml
+`
+
+
+## deploy flux source of truth repo and sync
+
+`
+
 `
 
 # Appendix

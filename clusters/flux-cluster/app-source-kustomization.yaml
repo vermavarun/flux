@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m0s
-  path: ./kustomize
+  path: ./app # directory of https://github.dev/vermavarun/flux-source from where the deployment should happen
   prune: true
   retryInterval: 2m0s
   sourceRef:
