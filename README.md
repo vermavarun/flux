@@ -23,7 +23,8 @@ All operations for flux with Kubernetes
 # Flux
 
 - flux get kustomizations --watch
-- 
+- flux reconcile kustomization app-source --with-source
+- flux -n flux-system create secret git git-access-auth --url=https://github.com/vermavarun/flux-source --username=vermavarun --password={PAT}
 
 ## set up local repo for flux tool
 
@@ -42,7 +43,7 @@ flux create source git app-source --url=https://github.com/vermavarun/flux-sourc
 ## set up sync of truth repo
 
 `
-flux create kustomization app-source --target-namespace=default --source=app-source --path="./kustomize" --prune=true --wait=true --interval=30m --retry-interval=2m --health-check-timeout=3m --export > ./clusters/flux-cluster/app-source-kustomization.yaml
+flux create kustomization app-source --target-namespace=default --source=app-source --path="./app" --prune=true --wait=true --interval=30m --retry-interval=2m --health-check-timeout=3m --export > ./clusters/flux-cluster/app-source-kustomization.yaml
 `
 
 run
