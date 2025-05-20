@@ -6,7 +6,7 @@ All operations for flux with Kubernetes
 - show all clusters
   - kind get clusters
 - Delete cluster
-  - kind delete cluster
+  - kind delete cluster --name {cluster-name}
 - Interact with new kind cluster
   - kubectl cluster-info --context flux-cluster
 
@@ -18,9 +18,32 @@ All operations for flux with Kubernetes
 
 # Flux
 
-## set up local repo
+## set up local repo for flux tool
 
 export GITHUB_USER=vermavarun
 export GITHUB_TOKEN=''
 
 `flux bootstrap github --owner=$GITHUB_USER --repository=flux --branch=main --path=deployinfra --personal`
+
+
+## set up source of truth repo folder
+
+`
+flux create source git flux-repo-obj --url=https://github.com/vermavarun/flux.git --branch=main --interval=30s --export > ./deploy-app/flux_source.yaml
+`
+
+## set up sync of truth repo
+
+`
+flux create kustomization flux-repo-obj --source=flux-repo-obj --path="./deploy-app/" --prune=true --validation=client --interval=30s --export > ./deploy-app/flux_sync.yaml
+`
+
+run
+`
+kubectl apply -f deploy-app/flux_source.yaml
+kubectl apply -f deploy-app/flux_sync.yaml
+`
+
+# Appendix
+
+- [flux docs](https://fluxcd.io/flux/get-started/)
