@@ -41,7 +41,7 @@ flux create source git app-source --url=https://github.com/vermavarun/flux-sourc
 ## set up sync of truth repo
 
 `
-flux create kustomization flux-repo-obj --source=flux-repo-obj --path="./deploy-app/" --prune=true --validation=client --interval=30s --export > ./deploy-app/flux_sync.yaml
+flux create kustomization app-source --target-namespace=default --source=app-source --path="./kustomize" --prune=true --wait=true --interval=30m --retry-interval=2m --health-check-timeout=3m --export > ./clusters/flux-cluster/app-source-kustomization.yaml
 `
 
 run
